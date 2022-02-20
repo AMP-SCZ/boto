@@ -72,6 +72,7 @@ from boto.resultset import ResultSet
 HAVE_HTTPS_CONNECTION = False
 try:
     import ssl
+    ssl._create_default_https_context = ssl._create_unverified_context
     from boto import https_connection
     # Google App Engine runs on Python 2.5 so doesn't have ssl.SSLError.
     if hasattr(ssl, 'SSLError'):
